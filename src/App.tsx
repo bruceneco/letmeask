@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 import { AnimatedRoutes, RouteTransition } from "./utils/animation/RouteTransition";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 export const ROUTES = {
   Home: "/",
@@ -11,10 +12,12 @@ export const ROUTES = {
 function App() {
   return (
     <BrowserRouter>
-      <AnimatedRoutes>
-        <RouteTransition path={ROUTES.Home} exact component={Home} />
-        <RouteTransition path={ROUTES.NewRoom} component={NewRoom}/>
-      </AnimatedRoutes>
+      <AuthContextProvider>
+        <AnimatedRoutes>
+          <RouteTransition path={ROUTES.Home} exact component={Home} />
+          <RouteTransition path={ROUTES.NewRoom} component={NewRoom} />
+        </AnimatedRoutes>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }

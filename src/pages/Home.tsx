@@ -1,18 +1,27 @@
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 import googleLogoIcon from "../assets/images/google-icon.svg";
+
 import "../styles/auth.scss";
+
 import { Button } from "../components/Button";
 import { ROUTES } from "../App";
+import { useAuth } from "../hooks/useAuth";
 
 type HomeProps = {
   history: { push: Function }
 }
 
 export function Home({ history }: HomeProps) {
-  function handleCreateRoom() {
-    history.push(ROUTES.NewRoom)
+  const { user, signInWithGoogle } = useAuth();
+
+  async function handleCreateRoom() {
+    if (!user) {
+      await signInWithGoogle();
+    }
+    history.push(ROUTES.NewRoom);
   }
+
   return (
     <div id="page-auth">
       <aside>
@@ -22,7 +31,7 @@ export function Home({ history }: HomeProps) {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={logoImg} alt="Logo da Letmeask" />
           <button onClick={handleCreateRoom} className="create-room">
             <img src={googleLogoIcon} alt="Logo do Google" />
             Crie sua sala com o Google
