@@ -3,10 +3,12 @@ import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 import { AnimatedRoutes, RouteTransition } from "./utils/animation/RouteTransition";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { Room } from "./pages/Room";
 
 export const ROUTES = {
-  Home: "/",
-  NewRoom: "/rooms/new"
+  Home: () => "/",
+  NewRoom: () =>"/rooms/new",
+  Room: (id: string | null =":id") => `/rooms/${id}`
 };
 
 function App() {
@@ -14,8 +16,9 @@ function App() {
     <BrowserRouter>
       <AuthContextProvider>
         <AnimatedRoutes>
-          <RouteTransition path={ROUTES.Home} exact component={Home} />
-          <RouteTransition path={ROUTES.NewRoom} component={NewRoom} />
+          <RouteTransition path={ROUTES.Home()} exact component={Home} />
+          <RouteTransition path={ROUTES.NewRoom()} component={NewRoom} />
+          <RouteTransition path={ROUTES.Room()} component={Room} />
         </AnimatedRoutes>
       </AuthContextProvider>
     </BrowserRouter>
