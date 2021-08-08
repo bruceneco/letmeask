@@ -9,13 +9,11 @@ import { ROUTES } from "../App";
 import { useAuth } from "../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { database } from "../services/firebase";
+import { useHistory } from "react-router-dom";
 
-type HomeProps = {
-  history: { push: Function }
-}
-
-export function Home({ history }: HomeProps) {
+export function Home() {
   const { user, signInWithGoogle } = useAuth();
+  const history = useHistory();
   const [roomCode, setRoomCode] = useState("");
 
   async function handleCreateRoom() {
