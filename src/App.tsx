@@ -4,13 +4,15 @@ import { NewRoom } from "./pages/NewRoom";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { Room } from "./pages/Room";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import "styles/app.scss";
+import "app.scss";
+import { AdminRoom } from "./pages/AdminRoom";
 
 
 export const ROUTES = {
   Home: () => "/",
   NewRoom: () => "/rooms/new",
-  Room: (id: string | null = ":id") => `/rooms/${id}`
+  Room: (id: string | null = ":id") => `/rooms/${id}`,
+  AdminRoom: (id: string | null = ":id") => `/admin/rooms/${id}`,
 };
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
                 <Route path={ROUTES.Home()} exact component={Home} />
                 <Route path={ROUTES.NewRoom()} component={NewRoom} />
                 <Route path={ROUTES.Room()} component={Room} />
+                <Route path={ROUTES.AdminRoom()} component={AdminRoom} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>)} />

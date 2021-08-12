@@ -1,14 +1,14 @@
-import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
-import googleLogoIcon from "../assets/images/google-icon.svg";
+import illustrationImg from "../../assets/images/illustration.svg";
+import logoImg from "../../assets/images/logo.svg";
+import googleLogoIcon from "../../assets/images/google-icon.svg";
 
-import "../styles/auth.scss";
+import "./styles.scss";
 
-import { Button } from "../components/Button";
-import { ROUTES } from "../App";
-import { useAuth } from "../hooks/useAuth";
+import { Button } from "../../components/Button";
+import { ROUTES } from "../../App";
+import { useAuth } from "../../hooks/useAuth";
 import { FormEvent, useState } from "react";
-import { database } from "../services/firebase";
+import { database } from "../../services/firebase";
 import { useHistory } from "react-router-dom";
 
 export function Home() {
@@ -33,7 +33,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert("Room does not exists.")
+      alert("Index does not exists.")
       return;
     }
     history.push(ROUTES.Room(roomCode))
