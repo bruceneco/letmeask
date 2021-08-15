@@ -33,7 +33,10 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert("Index does not exists.")
+      alert("Sala inexistente.")
+      return;
+    } else if (roomRef.val().closedAt) {
+      alert("A sala já foi fechada.")
       return;
     }
     history.push(ROUTES.Room(roomCode))

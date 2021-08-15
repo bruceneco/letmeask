@@ -24,7 +24,7 @@ export function NewRoom() {
       title: roomName,
       authorId: user?.id
     });
-    history.push(ROUTES.Room(firebaseRoom.key));
+    history.push(ROUTES.AdminRoom(firebaseRoom.key));
   }
 
   return (
