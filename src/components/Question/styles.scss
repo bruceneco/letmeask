@@ -7,7 +7,16 @@
   & + .question {
     margin-top: .8rem;
   }
-
+  &.highlight {
+    border: .1rem solid #835afd;
+    background: #F4F0FF;
+    & footer .user-info span {
+      color: #29292E;
+    }
+  }
+  &.answered {
+    background: #DBDCDD;
+  }
   p {
     color: #29292e;
   }
@@ -17,6 +26,10 @@
     align-items: center;
     margin-top: 2.4rem;
 
+    .buttons {
+      display: flex;
+      gap: 1.6rem;
+    }
     .user-info {
       display: flex;
       align-items: center;
