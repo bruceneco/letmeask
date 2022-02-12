@@ -28,13 +28,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --max-warnings=0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "lint": "eslint src --max-warnings=0",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -55,8 +50,10 @@
     "babel-plugin-styled-components": "^2.0.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "lint-staged": "^12.3.3",
     "prettier": "^2.5.1",
-    "typescript-plugin-styled-components": "^2.0.0"
+    "typescript-plugin-styled-components": "^2.0.0",
+    "husky": "^7.0.0"
   },
   "lint-staged": {
     "src/**/*": [
