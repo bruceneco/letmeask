@@ -1,10 +1,10 @@
-import { animated } from "react-spring";
-import styled from "styled-components";
+import { animated } from 'react-spring'
+import styled from 'styled-components'
 
-export const AnimatedPageTransition = styled(animated.div)`
+export const AnimatedPageTransition = animated(styled.div`
   & > * {
     position: absolute;
     top: 0;
     left: 0;
   }
-`;
+`)

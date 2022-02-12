@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html,
-    body{
+    body {
       height: 100%;
     }
 
@@ -54,8 +54,11 @@ const GlobalStyles = createGlobalStyle`
       background: ${theme.colors.background};
       color: ${theme.colors.black};
     }
-    
-    body, input, button, textarea {
+
+    body,
+    input,
+    button,
+    textarea {
       font-weight: ${theme.font.normal};
       font-size: ${theme.font.sizes.medium};
     }

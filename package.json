@@ -12,6 +12,7 @@
     "@types/react-dom": "^17.0.9",
     "classnames": "^2.3.1",
     "firebase": "^8.8.1",
+    "husky": "^7.0.4",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --max-warnings=0"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +53,14 @@
     "@types/react-transition-group": "^4.4.2",
     "@types/styled-components": "^5.1.22",
     "babel-plugin-styled-components": "^2.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
     "typescript-plugin-styled-components": "^2.0.0"
+  },
+  "lint-staged": {
+    "src/**/*": [
+      "yarn lint --fix"
+    ]
   }
 }

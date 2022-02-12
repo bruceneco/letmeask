@@ -1,43 +1,43 @@
-import illustrationImg from "../../assets/images/illustration.svg";
-import logoImg from "../../assets/images/logo.svg";
-import googleLogoIcon from "../../assets/images/google-icon.svg";
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+import googleLogoIcon from '../../assets/images/google-icon.svg'
 
-import "./styles.scss";
+import './styles.scss'
 
-import { Button } from "../../components/Button";
-import { ROUTES } from "../../App";
-import { useAuth } from "../../hooks/useAuth";
-import { FormEvent, useState } from "react";
-import { database } from "../../services/firebase";
-import { useHistory } from "react-router-dom";
+import { Button } from '../../components/Button'
+import { ROUTES } from '../../App'
+import { useAuth } from '../../hooks/useAuth'
+import { FormEvent, useState } from 'react'
+import { database } from '../../services/firebase'
+import { useHistory } from 'react-router-dom'
 
 export function Home() {
-  const { user, signInWithGoogle } = useAuth();
-  const history = useHistory();
-  const [roomCode, setRoomCode] = useState("");
+  const { user, signInWithGoogle } = useAuth()
+  const history = useHistory()
+  const [roomCode, setRoomCode] = useState('')
 
   async function handleCreateRoom() {
     if (!user) {
-      await signInWithGoogle();
+      await signInWithGoogle()
     }
-    history.push(ROUTES.NewRoom());
+    history.push(ROUTES.NewRoom())
   }
 
   async function handleJoinRoom(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
-    if (roomCode.trim() === "") {
-      return;
+    if (roomCode.trim() === '') {
+      return
     }
 
-    const roomRef = await database.ref(`rooms/${roomCode}`).get();
+    const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if (!roomRef.exists()) {
-      alert("Sala inexistente.")
-      return;
+      alert('Sala inexistente.')
+      return
     } else if (roomRef.val().closedAt) {
-      alert("A sala já foi fechada.")
-      return;
+      alert('A sala já foi fechada.')
+      return
     }
     history.push(ROUTES.Room(roomCode))
   }
@@ -45,7 +45,10 @@ export function Home() {
   return (
     <div id="page-auth">
       <aside>
-        <img src={illustrationImg} alt="Abstração de um chat de perguntas e respostas." />
+        <img
+          src={illustrationImg}
+          alt="Abstração de um chat de perguntas e respostas."
+        />
         <strong>Crie salas de Q&A ao vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo real.</p>
       </aside>
@@ -69,5 +72,5 @@ export function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }
