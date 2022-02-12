@@ -6,7 +6,7 @@ import { FC } from 'react'
 const AnimatedRouteSwitch: FC = ({ children }) => {
   const location = useLocation()
   const transitions = useTransition(location, {
-    from: { opacity: 0, position: 'relative', y: -50 },
+    from: { opacity: 0, position: 'relative', y: -100 },
     enter: {
       opacity: 1,
       y: 0
@@ -14,7 +14,7 @@ const AnimatedRouteSwitch: FC = ({ children }) => {
     leave: {
       y: 100,
       opacity: 0,
-      config: { duration: 100 }
+      config: { duration: 200 }
     }
   })
 

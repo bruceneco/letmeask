@@ -7,7 +7,7 @@ import { AdminRoom } from './pages/AdminRoom'
 import { ThemeProvider } from 'styled-components'
 import defaultTheme from './styles/theme'
 import GlobalStyles from './styles/global'
-import AnimatedRouteSwitch from './components/AnimatedRouteSwitch'
+import AnimatedRouteSwitch from './components/animation/AnimatedRouteSwitch'
 
 export const ROUTES = {
   Home: () => '/',
