@@ -27,7 +27,7 @@ const defaultTheme = {
     white: '#fff',
     black: '#29292a',
     lightGray: '#fefefe',
-    gray: '#a8a8b3',
+    grays: ['#a8a8b3', '#737380', '#f4f0ff'],
     pink: '#e559f9',
     red: '#ea4335'
   },
