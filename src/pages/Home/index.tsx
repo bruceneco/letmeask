@@ -10,6 +10,8 @@ import { useAuth } from '../../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { database } from '../../services/firebase'
 import { useHistory } from 'react-router-dom'
+import AnimateEntry from '../../components/animation/AnimateEntry'
+import AnimateCascade from '../../components/animation/AnimateCascade'
 
 export function Home() {
   const { user, signInWithGoogle } = useAuth()
@@ -45,22 +47,36 @@ export function Home() {
   return (
     <div id="page-auth">
       <aside>
-        <img
-          src={illustrationImg}
-          alt="Abstração de um chat de perguntas e respostas."
-        />
-        <strong>Crie salas de Q&A ao vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real.</p>
+        <AnimateEntry
+          direction={'bottomToTop'}
+          opacity
+          delay={400}
+          duration={1200}
+        >
+          <img
+            src={illustrationImg}
+            alt="Abstração de um chat de perguntas e respostas."
+          />
+          <div>
+            <strong>Crie salas de Q&A ao vivo</strong>
+            <p>Tire as dúvidas da sua audiência em tempo real.</p>
+          </div>
+        </AnimateEntry>
       </aside>
       <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Logo da Letmeask" />
-          <button onClick={handleCreateRoom} className="create-room">
-            <img src={googleLogoIcon} alt="Logo do Google" />
-            Crie sua sala com o Google
-          </button>
-          <div className="separator">ou entre em uma sala</div>
-          <form onSubmit={handleJoinRoom}>
+        <form onSubmit={handleJoinRoom}>
+          <AnimateCascade
+            duration={400}
+            delay={150}
+            className="main-content"
+            alternate
+          >
+            <img src={logoImg} alt="Logo da Letmeask" />
+            <button onClick={handleCreateRoom} className="create-room">
+              <img src={googleLogoIcon} alt="Logo do Google" />
+              Crie sua sala com o Google
+            </button>
+            <div className="separator">ou entre em uma sala</div>
             <input
               type="text"
               placeholder="Digite o código da sala"
@@ -68,8 +84,8 @@ export function Home() {
               onChange={(event) => setRoomCode(event.target.value)}
             />
             <Button type="submit">Entrar na sala</Button>
-          </form>
-        </div>
+          </AnimateCascade>
+        </form>
       </main>
     </div>
   )
