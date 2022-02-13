@@ -53,7 +53,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask logo" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleCloseRoom}>
+            <Button variant="outlined" onClick={handleCloseRoom}>
               Encerrar Sala
             </Button>
           </div>

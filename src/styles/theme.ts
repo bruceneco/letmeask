@@ -39,6 +39,9 @@ const defaultTheme = {
     large: '4.0rem',
     xlarge: '4.8rem',
     xxlarge: '5.6rem'
+  },
+  radius: {
+    normal: '0.8rem'
   }
 }
 
