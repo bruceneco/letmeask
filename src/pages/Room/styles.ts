@@ -15,7 +15,7 @@ export const Header = styled.header`
     padding: ${theme.spacings.small} 0;
   `}
 `
-export const Content = styled.div`
+export const HeaderContent = styled.div`
   max-width: 112rem;
   margin: 0 auto;
   display: flex;

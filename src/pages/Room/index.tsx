@@ -8,6 +8,7 @@ import { database } from '../../services/firebase'
 import { Question } from '../../components/Question'
 import { useRoom } from '../../hooks/useRoom'
 import * as S from './styles'
+import AnimateCascade from '../../components/animation/AnimateCascade'
 
 type RoomParams = {
   id: string
@@ -67,10 +68,19 @@ export function Room() {
   return (
     <S.RoomWrapper>
       <S.Header>
-        <S.Content>
+        <S.HeaderContent>
           <img src={logoImg} alt="Letmeask logo" />
-          <RoomCode code={roomId} />
-        </S.Content>
+          <AnimateCascade
+            key={'room-code'}
+            duration={600}
+            delay={300}
+            startDelay={300}
+            alternateDir={'topBottom'}
+            alternate
+          >
+            <RoomCode code={roomId} />
+          </AnimateCascade>
+        </S.HeaderContent>
       </S.Header>
       <S.Main>
         <S.RoomTitle>

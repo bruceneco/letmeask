@@ -57,7 +57,7 @@ export function AdminRoom() {
             key={'admin-room-header-buttons'}
             duration={600}
             delay={300}
-            startDelay={500}
+            startDelay={300}
             alternateDir={'topBottom'}
             alternate
           >
