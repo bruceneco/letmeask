@@ -5,7 +5,7 @@ export const RoomCodeWrapper = styled.button`
     height: 4rem;
     border-radius: ${theme.radius.normal};
     overflow: hidden;
-
+    margin-left: ${theme.spacings.xsmall};
     background: ${theme.colors.white};
     border: 0.1rem solid ${theme.colors.primary};
     cursor: pointer;
@@ -16,13 +16,14 @@ export const RoomCodeWrapper = styled.button`
 
 export const CopyImgWrapper = styled.div`
   ${({ theme }) => css`
+    height: 100%;
+    background: ${theme.colors.primary};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     img {
-      background: ${theme.colors.primary};
       padding: 0 calc(${theme.spacings.xxsmall} * 1.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
     }
   `}
 `
@@ -34,7 +35,7 @@ export const RoomCode = styled.span`
     flex: 1;
     padding: 0 ${theme.spacings.xsmall} 0 calc(${theme.spacings.xxsmall} * 1.5);
     width: fit-content;
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: ${theme.font.sizes.small};
+    font-weight: ${theme.font.normal};
   `}
 `
