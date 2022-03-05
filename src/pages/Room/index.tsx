@@ -2,12 +2,12 @@ import { useParams } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.svg'
 import { Button } from '../../components/Button'
 import { RoomCode } from '../../components/RoomCode'
-import './styles.scss'
 import { FormEvent, useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { Question } from '../../components/Question'
 import { useRoom } from '../../hooks/useRoom'
+import * as S from './styles'
 
 type RoomParams = {
   id: string
@@ -65,30 +65,30 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
-      <header>
-        <div className="content">
+    <S.RoomWrapper>
+      <S.Header>
+        <S.Content>
           <img src={logoImg} alt="Letmeask logo" />
           <RoomCode code={roomId} />
-        </div>
-      </header>
-      <main>
-        <div className="room-title">
+        </S.Content>
+      </S.Header>
+      <S.Main>
+        <S.RoomTitle>
           <h1>Sala {roomName}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-        </div>
+        </S.RoomTitle>
         <form onSubmit={handleNewQuestion}>
-          <textarea
+          <S.TextArea
             placeholder="O que você quer perguntar?"
             onChange={(event) => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
-          <div className="form-footer">
+          <S.FormFooter>
             {user ? (
-              <div className="user-info">
+              <S.UserInfo>
                 <img src={user.avatar} alt={user.name} />
                 <span>{user.name}</span>
-              </div>
+              </S.UserInfo>
             ) : (
               <span>
                 Para enviar uma pergunta, <button>faça seu login</button>.
@@ -97,9 +97,9 @@ export function Room() {
             <Button disabled={!isValidQuestion || !user} type="submit">
               Enviar pergunta
             </Button>
-          </div>
+          </S.FormFooter>
         </form>
-        <div className="question-list">
+        <S.QuestionList>
           {questions.map((question) => (
             <Question
               isHighlighted={question.isHighlighted}
@@ -137,8 +137,8 @@ export function Room() {
               )}
             </Question>
           ))}
-        </div>
-      </main>
-    </div>
+        </S.QuestionList>
+      </S.Main>
+    </S.RoomWrapper>
   )
 }
