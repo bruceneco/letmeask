@@ -1,9 +1,18 @@
 import styled, { css } from 'styled-components'
 
+export const AdminRoomWrapper = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    padding: ${theme.spacings.small};
+  `}
+`
 export const Header = styled.header`
   ${({ theme }) => css`
-    padding: ${theme.spacings.small};
-    border-bottom: 0.1rem solid ${theme.colors.lightGray};
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 80rem;
+    padding: ${theme.spacings.small} 0;
   `}
 `
 

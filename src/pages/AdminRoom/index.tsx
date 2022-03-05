@@ -49,7 +49,7 @@ export function AdminRoom() {
   }
 
   return (
-    <div>
+    <S.AdminRoomWrapper>
       <S.Header>
         <S.Content>
           <img src={logoImg} alt="Letmeask logo" />
@@ -97,6 +97,6 @@ export function AdminRoom() {
           ))}
         </S.QuestionList>
       </S.Main>
-    </div>
+    </S.AdminRoomWrapper>
   )
 }
