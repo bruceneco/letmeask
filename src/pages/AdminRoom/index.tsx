@@ -5,11 +5,11 @@ import checkImg from '../../assets/images/check.svg'
 import highlightImg from '../../assets/images/answer.svg'
 import { Button } from '../../components/Button'
 import { RoomCode } from '../../components/RoomCode'
-import './styles.scss'
 import { database } from '../../services/firebase'
 import { Question } from '../../components/Question'
 import { useRoom } from '../../hooks/useRoom'
 import { ROUTES } from '../../App'
+import * as S from './styles'
 
 type RoomParams = {
   id: string
@@ -35,11 +35,13 @@ export function AdminRoom() {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
   }
+
   async function handleCheckQuestionAsAnswered(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isAnswered: true
     })
   }
+
   async function handleHighlightQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isHighlighted: true
@@ -47,9 +49,9 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="admin-room">
-      <header>
-        <div className="content">
+    <div>
+      <S.Header>
+        <S.Content>
           <img src={logoImg} alt="Letmeask logo" />
           <div>
             <RoomCode code={roomId} />
@@ -57,14 +59,14 @@ export function AdminRoom() {
               Encerrar Sala
             </Button>
           </div>
-        </div>
-      </header>
-      <main>
-        <div className="room-title">
+        </S.Content>
+      </S.Header>
+      <S.Main>
+        <S.RoomTitle>
           <h1>Sala {roomName}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-        </div>
-        <div className="question-list">
+        </S.RoomTitle>
+        <S.QuestionList>
           {questions.map((question) => (
             <Question
               isHighlighted={question.isHighlighted}
@@ -93,8 +95,8 @@ export function AdminRoom() {
               </button>
             </Question>
           ))}
-        </div>
-      </main>
+        </S.QuestionList>
+      </S.Main>
     </div>
   )
 }
