@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import AnimateCascade from '../../components/animation/AnimateCascade'
 
 export const AdminRoomWrapper = styled.div`
   ${({ theme }) => css`
@@ -16,29 +17,27 @@ export const Header = styled.header`
   `}
 `
 
-export const Content = styled.div`
+export const HeaderContent = styled.div`
+  max-width: 112rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > img {
+    max-height: 4.5rem;
+  }
+`
+export const HeaderButtons = styled(AnimateCascade)`
   ${({ theme }) => css`
-    max-width: 112rem;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: ${theme.spacings.xsmall};
 
-    > img {
-      max-height: 4.5rem;
-    }
-
-    > div {
-      display: flex;
-      gap: ${theme.spacings.xsmall};
-
-      button {
-        height: 4rem;
-      }
+    button {
+      height: 4rem;
     }
   `}
 `
-
 export const Main = styled.main`
   max-width: 80rem;
   margin: 0 auto;

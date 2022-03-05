@@ -9,6 +9,7 @@ type AnimateCascadeProps = {
   alternate?: boolean
   delay?: number
   key: string
+  startDelay?: number
 }
 
 const AnimateCascade: React.FC<AnimateCascadeProps> = ({
@@ -17,6 +18,7 @@ const AnimateCascade: React.FC<AnimateCascadeProps> = ({
   className,
   alternate = false,
   alternateDir = 'leftRight',
+  startDelay = 0,
   delay = 300,
   key
 }) => {
@@ -43,13 +45,13 @@ const AnimateCascade: React.FC<AnimateCascadeProps> = ({
       opacity: 1,
       y: 0,
       x: 0,
-      delay: delay * i,
+      delay: i === 0 && startDelay ? startDelay : delay * i,
       config: {
         duration,
         easing: easings.easeOutBack
       }
     }))
-  }, [api, childrenCount, delay, duration])
+  }, [api, childrenCount, delay, duration, startDelay])
 
   return (
     <div className={className}>

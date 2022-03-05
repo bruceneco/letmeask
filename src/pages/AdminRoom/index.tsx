@@ -51,15 +51,22 @@ export function AdminRoom() {
   return (
     <S.AdminRoomWrapper>
       <S.Header>
-        <S.Content>
+        <S.HeaderContent>
           <img src={logoImg} alt="Letmeask logo" />
-          <div>
+          <S.HeaderButtons
+            key={'admin-room-header-buttons'}
+            duration={600}
+            delay={300}
+            startDelay={500}
+            alternateDir={'topBottom'}
+            alternate
+          >
             <RoomCode code={roomId} />
             <Button variant="outlined" onClick={handleCloseRoom}>
               Encerrar Sala
             </Button>
-          </div>
-        </S.Content>
+          </S.HeaderButtons>
+        </S.HeaderContent>
       </S.Header>
       <S.Main>
         <S.RoomTitle>
