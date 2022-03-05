@@ -49,7 +49,12 @@ export function NewRoom() {
       </S.Aside>
       <S.Main>
         <S.Form onSubmit={handleCreateNewRoom}>
-          <S.MainContent duration={400} delay={150} alternate>
+          <S.MainContent
+            duration={400}
+            delay={150}
+            alternate
+            key={'main-content'}
+          >
             <img src={logoImg} alt="Letmeask" />
             <h2>Crie uma nova sala</h2>
             <input

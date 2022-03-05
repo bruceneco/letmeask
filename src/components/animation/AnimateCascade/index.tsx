@@ -8,6 +8,7 @@ type AnimateCascadeProps = {
   alternateDir?: 'leftRight' | 'topBottom'
   alternate?: boolean
   delay?: number
+  key: string
 }
 
 const AnimateCascade: React.FC<AnimateCascadeProps> = ({
@@ -16,7 +17,8 @@ const AnimateCascade: React.FC<AnimateCascadeProps> = ({
   className,
   alternate = false,
   alternateDir = 'leftRight',
-  delay = 300
+  delay = 300,
+  key
 }) => {
   const childrenCount = Children.count(children)
   const getXYInitialValues = useCallback(
@@ -52,10 +54,7 @@ const AnimateCascade: React.FC<AnimateCascadeProps> = ({
   return (
     <div className={className}>
       {springs.map((styles, index) => (
-        <animated.div
-          style={styles}
-          key={`animation-${new Date().getTime()}-${index}`}
-        >
+        <animated.div style={styles} key={`animation-${index}-${key}`}>
           {Children.toArray(children)[index]}
         </animated.div>
       ))}

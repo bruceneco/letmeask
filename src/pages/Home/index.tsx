@@ -62,7 +62,12 @@ export function Home() {
       </S.Aside>
       <S.Main>
         <S.Form onSubmit={handleJoinRoom}>
-          <S.MainContent duration={400} delay={150} alternate>
+          <S.MainContent
+            key={'main-content'}
+            duration={400}
+            delay={150}
+            alternate
+          >
             <img src={logoImg} alt="Logo da Letmeask" />
             <S.CreateRoom onClick={handleCreateRoom}>
               <img src={googleLogoIcon} alt="Logo do Google" />
