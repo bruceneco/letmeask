@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import AnimateCascade from '../../components/animation/AnimateCascade'
 
 export const PageAuthWrapper = styled.div`
@@ -9,136 +9,150 @@ export const PageAuthWrapper = styled.div`
 `
 
 export const Aside = styled.aside`
-  flex: 7;
-  background: #835afd;
-  color: #fff;
+  ${({ theme }) => css`
+    flex: 7;
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  padding: 12rem 8rem;
+    padding: 12rem 8rem;
 
-  img {
-    max-width: 32rem;
-  }
+    img {
+      max-width: 32rem;
+    }
 
-  strong {
-    font: 700 3.6rem 'Poppins', sans-serif;
-    line-height: 4.2rem;
-    margin-top: 1.6rem;
-  }
+    strong {
+      font: ${theme.font.bold} cacl(1.28 * ${theme.font.sizes.xxlarge})
+          'Poppins',
+        sans-serif;
+      line-height: 4.2rem;
+      margin-top: ${theme.spacings.xsmall};
+    }
 
-  p {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    margin-top: 1.6rem;
-    color: #f8f8f8;
-  }
+    p {
+      font-size: ${theme.font.sizes.xxlarge};
+      line-height: 3.2rem;
+      margin-top: ${theme.spacings.xsmall};
+      color: ${theme.colors.lightGray};
+    }
+  `}
 `
 
 export const Main = styled.main`
-  flex: 8;
-  padding: 0 3.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${({ theme }) => css`
+    flex: 8;
+    padding: 0 ${theme.spacings.medium};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `}
 `
 
 export const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 32rem;
-  align-items: stretch;
-  text-align: center;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 32rem;
+    align-items: stretch;
+    text-align: center;
 
-  p {
-    font-size: 1.4rem;
-    color: #737380;
-    margin-top: 1.6rem;
+    p {
+      font-size: ${theme.font.sizes.small};
+      color: ${theme.colors.grays[1]};
+      margin-top: ${theme.spacings.xsmall};
 
-    a {
-      color: #e559f9;
+      a {
+        color: ${theme.colors.pink};
+      }
     }
-  }
+  `}
 `
 
 export const CreateRoom = styled.button`
-  margin-top: 6.4rem;
-  height: 5rem;
-  border-radius: 0.8rem;
-  font-weight: 500;
-  background: #ea4335;
-  color: #fff;
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xxlarge};
+    height: 5rem;
+    border-radius: ${theme.radius.normal};
+    font-weight: ${theme.font.normal};
+    background: ${theme.colors.red};
+    color: ${theme.colors.white};
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  cursor: pointer;
-  border: 0;
+    cursor: pointer;
+    border: 0;
 
-  transition: filter 0.2s;
+    transition: filter 0.2s;
 
-  img {
-    margin-right: 0.8rem;
-  }
+    img {
+      margin-right: ${theme.spacings.xxsmall};
+    }
 
-  &:hover {
-    filter: brightness(0.9);
-  }
+    &:hover {
+      filter: brightness(0.9);
+    }
+  `}
 `
 export const Separator = styled.div`
-  font-size: 1.4rem;
-  color: #a8a8b3;
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.grays[0]};
 
-  margin: 3.2rem 0;
-  display: flex;
-  align-items: center;
+    margin: ${theme.spacings.medium} 0;
+    display: flex;
+    align-items: center;
 
-  &::before {
-    content: '';
-    flex: 1;
-    height: 0.1rem;
-    background: #a8a8b3;
-    margin-right: 1.6rem;
-  }
+    &::before {
+      content: '';
+      flex: 1;
+      height: 0.1rem;
+      background: ${theme.colors.grays[0]};
+      margin-right: ${theme.spacings.xsmall};
+    }
 
-  &::after {
-    content: '';
-    flex: 1;
-    height: 0.1rem;
-    background: #a8a8b3;
-    margin-left: 1.6rem;
-  }
+    &::after {
+      content: '';
+      flex: 1;
+      height: 0.1rem;
+      background: ${theme.colors.grays[0]};
+      margin-left: ${theme.spacings.xsmall};
+    }
+  `}
 `
 
 export const MainContent = styled(AnimateCascade)`
-  > img {
-    align-self: center;
-  }
+  ${({ theme }) => css`
+    > img {
+      align-self: center;
+    }
 
-  h2 {
-    font-size: 2.4rem;
-    font-family: 'Poppins', sans-serif;
-    margin: 6.4rem 0 2.4rem;
-  }
+    h2 {
+      font-size: ${theme.font.sizes.xxlarge};
+      font-family: 'Poppins', sans-serif;
+      margin: ${theme.spacings.xxlarge} 0 ${theme.spacings.small};
+    }
 
-  input {
-    height: 5rem;
-    border-radius: 0.8rem;
-    padding: 0 1.6rem;
-    background: #fff;
-    border: 0.1rem solid #a8a8b3;
-  }
+    input {
+      height: 5rem;
+      border-radius: ${theme.radius.normal};
+      padding: 0 ${theme.spacings.xsmall};
+      background: ${theme.colors.white};
+      border: 0.1rem solid ${theme.colors.grays[0]};
+    }
 
-  button {
-    margin-top: 1.6rem;
-  }
+    button {
+      margin-top: ${theme.spacings.xsmall};
+    }
 
-  button,
-  input {
-    width: 100%;
-  }
+    button,
+    input {
+      width: 100%;
+    }
+  `}
 `
