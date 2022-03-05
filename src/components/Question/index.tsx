@@ -1,39 +1,39 @@
-import "./styles.scss";
-import { ReactNode } from "react";
-import cls from "classnames";
+import { ReactNode, useMemo } from 'react'
+import * as S from './styles'
 
 type QuestionProps = {
-  content: string;
+  content: string
   author: {
-    name: string;
-    avatar: string;
-  },
-  children?: ReactNode;
-  isHighlighted?: boolean;
-  isAnswered?: boolean;
+    name: string
+    avatar: string
+  }
+  children?: ReactNode
+  isHighlighted?: boolean
+  isAnswered?: boolean
 }
 
-export function Question(
-  {
-    content,
-    author,
-    children,
-    isAnswered,
-    isHighlighted
-  }: QuestionProps) {
+export function Question({
+  content,
+  author,
+  children,
+  isAnswered,
+  isHighlighted
+}: QuestionProps) {
+  const variant = useMemo(() => {
+    if (isAnswered) return 'answered'
+    else if (isHighlighted) return 'highlighted'
+  }, [isAnswered, isHighlighted])
+
   return (
-    <div className={
-      cls("question",
-        { highlight: isHighlighted && !isAnswered },
-        { answered: isAnswered })}>
+    <S.QuestionWrapper variant={variant}>
       <p>{content}</p>
       <footer>
-        <div className="user-info">
+        <S.UserInfoWrapper>
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
-        </div>
-        <div className="buttons">{children}</div>
+        </S.UserInfoWrapper>
+        <S.ButtonsWrapper>{children}</S.ButtonsWrapper>
       </footer>
-    </div>
-  );
+    </S.QuestionWrapper>
+  )
 }
