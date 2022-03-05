@@ -1,12 +1,13 @@
 import { Link, useHistory } from 'react-router-dom'
 import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
-import '../Home/styles.scss'
 import { Button } from '../../components/Button'
 import { ROUTES } from '../../App'
 import { FormEvent, useState } from 'react'
 import { database } from '../../services/firebase'
 import { useAuth } from '../../hooks/useAuth'
+import * as S from './styles'
+import AnimateEntry from '../../components/animation/AnimateEntry'
 
 export function NewRoom() {
   const [roomName, setRoomName] = useState('')
@@ -28,20 +29,29 @@ export function NewRoom() {
   }
 
   return (
-    <div id="page-auth">
-      <aside>
-        <img
-          src={illustrationImg}
-          alt="Abstração de um chat de perguntas e respostas."
-        />
-        <strong>Crie salas de Q&A ao vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real.</p>
-      </aside>
-      <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
-          <h2>Crie uma nova sala</h2>
-          <form onSubmit={handleCreateNewRoom}>
+    <S.PageAuthWrapper>
+      <S.Aside>
+        <AnimateEntry
+          direction={'bottomToTop'}
+          opacity
+          delay={400}
+          duration={1200}
+        >
+          <img
+            src={illustrationImg}
+            alt="Abstração de um chat de perguntas e respostas."
+          />
+          <div>
+            <strong>Crie salas de Q&A ao vivo</strong>
+            <p>Tire as dúvidas da sua audiência em tempo real.</p>
+          </div>
+        </AnimateEntry>
+      </S.Aside>
+      <S.Main>
+        <S.Form onSubmit={handleCreateNewRoom}>
+          <S.MainContent duration={400} delay={150} alternate>
+            <img src={logoImg} alt="Letmeask" />
+            <h2>Crie uma nova sala</h2>
             <input
               type="text"
               placeholder="Digite o código da sala"
@@ -49,13 +59,13 @@ export function NewRoom() {
               value={roomName}
             />
             <Button type="submit">Entrar na sala</Button>
-          </form>
-          <p>
-            Quer entrar em uma sala já existente?{' '}
-            <Link to={ROUTES.Home()}>Clique aqui</Link>
-          </p>
-        </div>
-      </main>
-    </div>
+            <p>
+              Quer entrar em uma sala já existente?{' '}
+              <Link to={ROUTES.Home()}>Clique aqui</Link>
+            </p>
+          </S.MainContent>
+        </S.Form>
+      </S.Main>
+    </S.PageAuthWrapper>
   )
 }
