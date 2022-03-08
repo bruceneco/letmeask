@@ -63,7 +63,7 @@ export function Home() {
       <S.Main>
         <S.Form onSubmit={handleJoinRoom}>
           <S.MainContent
-            key={'main-content'}
+            animationId={'main-content'}
             duration={400}
             delay={150}
             alternate

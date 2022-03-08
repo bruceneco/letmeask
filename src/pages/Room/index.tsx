@@ -71,7 +71,7 @@ export function Room() {
         <S.HeaderContent>
           <img src={logoImg} alt="Letmeask logo" />
           <AnimateCascade
-            key={'room-code'}
+            animationId={'room-code'}
             duration={600}
             delay={300}
             startDelay={300}

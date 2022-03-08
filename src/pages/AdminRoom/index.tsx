@@ -54,7 +54,7 @@ export function AdminRoom() {
         <S.HeaderContent>
           <img src={logoImg} alt="Letmeask logo" />
           <S.HeaderButtons
-            key={'admin-room-header-buttons'}
+            animationId={'admin-room-header-buttons'}
             duration={600}
             delay={300}
             startDelay={300}

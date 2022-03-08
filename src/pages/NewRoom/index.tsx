@@ -53,7 +53,7 @@ export function NewRoom() {
             duration={400}
             delay={150}
             alternate
-            key={'main-content'}
+            animationId={'main-content'}
           >
             <img src={logoImg} alt="Letmeask" />
             <h2>Crie uma nova sala</h2>
