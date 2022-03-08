@@ -41,11 +41,16 @@ export function AdminRoom() {
       isAnswered: true
     })
   }
+  function findQuestionById(searchId: string) {
+    return questions.find((question) => question.id === searchId)
+  }
 
   async function handleHighlightQuestion(questionId: string) {
-    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isHighlighted: true
-    })
+    const question = findQuestionById(questionId)
+    if (question)
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+        isHighlighted: !question.isHighlighted
+      })
   }
 
   return (
