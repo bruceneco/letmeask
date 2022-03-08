@@ -2,11 +2,14 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 const questionWrapperVariants = (theme: DefaultTheme) => ({
   answered: css`
-    background: ${theme.colors.lightGray};
+    background: ${theme.colors.grays[3]};
   `,
   highlighted: css`
+    padding: calc(${theme.spacings.small} - 0.1rem);
     border: 0.1rem solid ${theme.colors.primary};
     background: ${theme.colors.grays[2]};
+    transform: scaleX(104%) scaleY(104%);
+
     & footer ${UserInfoWrapper} span {
       color: ${theme.colors.black};
     }
@@ -23,19 +26,20 @@ export const QuestionWrapper = styled.div<QuestionWrapperProps>`
     box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.04);
     padding: ${theme.spacings.small};
     margin-top: ${theme.spacings.xxsmall};
-    ${variant && questionWrapperVariants(theme)[variant]}
+    transition: transform 0.2s, background 0.3s, border 0.3s;
+
     p {
       color: ${theme.colors.black};
     }
+
     footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: ${theme.spacings.small};
-
-      button {
-      }
     }
+
+    ${variant && questionWrapperVariants(theme)[variant]}
   `}
 `
 export const ButtonsWrapper = styled.div`
@@ -54,6 +58,7 @@ export const ButtonsWrapper = styled.div`
         align-items: flex-end;
         color: ${theme.colors.grays[1]};
         gap: ${theme.spacings.xxsmall};
+
         &.liked {
           color: ${theme.colors.primary};
 
@@ -79,6 +84,7 @@ export const UserInfoWrapper = styled.div`
       height: 3.2rem;
       border-radius: 50%;
     }
+
     span {
       margin-left: ${theme.spacings.xxsmall};
       color: ${theme.colors.grays[1]};
