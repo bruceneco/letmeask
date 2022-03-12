@@ -67,7 +67,7 @@ export const RoomTitle = styled.div`
   `}
 `
 
-export const QuestionList = styled.div`
+export const QuestionList = styled(AnimateCascade)`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.medium};
   `}

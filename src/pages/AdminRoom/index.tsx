@@ -41,6 +41,7 @@ export function AdminRoom() {
       isAnswered: true
     })
   }
+
   function findQuestionById(searchId: string) {
     return questions.find((question) => question.id === searchId)
   }
@@ -78,7 +79,13 @@ export function AdminRoom() {
           <h1>Sala {roomName}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </S.RoomTitle>
-        <S.QuestionList>
+        <S.QuestionList
+          delay={150}
+          duration={300}
+          alternateDir={'leftRight'}
+          alternate
+          animationId={'questions-admin'}
+        >
           {questions.map((question) => (
             <Question
               isHighlighted={question.isHighlighted}
